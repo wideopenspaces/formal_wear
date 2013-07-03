@@ -97,8 +97,7 @@ module FormalWear
       custom_store?(options) && options[:store].try(:lambda?)
     end
 
-    # When loading the Configurator, pre-populate from source
-    # if available
+    # When donning formal_wear, pre-populate from source if available
     def update_sources
       required_fields.each do |field, options|
         send(:"#{field}=", options[:source].call(self)) if options[:source] rescue nil

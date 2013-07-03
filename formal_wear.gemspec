@@ -5,7 +5,7 @@ Gem::Specification.new do |gem|
   gem.authors       = ["Jake Stetser"]
   gem.email         = ["jake@wideopenspac.es"]
   gem.description   = %q{FormalWear helps you create Form Objects with required and optional attributes and gets all fancy widdit.}
-  gem.summary       = %q{EZ Form objects}
+  gem.summary       = %q{You're going to like the way you look. I guarantee it.}
   gem.homepage      = "https://github.com/wideopenspaces/formal_wear"
 
   gem.files         = `git ls-files`.split($\)

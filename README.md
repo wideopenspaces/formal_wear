@@ -1,6 +1,6 @@
 # FormalWear
 
-[![Build Status](https://travis-ci.org/wideopenspaces/formal_wear.png)](https://travis-ci.org/wideopenspaces/formal_wear.png) [![Code Climate](https://codeclimate.com/github/wideopenspaces/formal_wear.png)](https://codeclimate.com/github/wideopenspaces/formal_wear)
+[![Build Status](https://travis-ci.org/wideopenspaces/formal_wear.png)](https://travis-ci.org/wideopenspaces/formal_wear.png) [![Code Climate](https://codeclimate.com/github/wideopenspaces/formal_wear.png)](https://codeclimate.com/github/wideopenspaces/formal_wear) [![Coverage Status](https://coveralls.io/repos/wideopenspaces/formal_wear/badge.png)](https://coveralls.io/r/wideopenspaces/formal_wear)
 
 "You're going to like the way you look. I guarantee it."
 

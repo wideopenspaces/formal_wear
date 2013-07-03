@@ -1,6 +1,6 @@
 # FormalWear
 
-[![Build Status](https://travis-ci.org/wideopenspaces/formal_wear.png)](https://travis-ci.org/wideopenspaces/formal_wear.png) [![Code Climate](https://codeclimate.com/github/wideopenspaces/formal_wear.png)](https://codeclimate.com/github/wideopenspaces/formal_wear) [![Coverage Status](https://coveralls.io/repos/wideopenspaces/formal_wear/badge.png)](https://coveralls.io/r/wideopenspaces/formal_wear)
+[![Build Status](https://travis-ci.org/wideopenspaces/formal_wear.png)](https://travis-ci.org/wideopenspaces/formal_wear.png) [![Code Climate](https://codeclimate.com/github/wideopenspaces/formal_wear.png)](https://codeclimate.com/github/wideopenspaces/formal_wear) [![Coverage Status](https://coveralls.io/repos/wideopenspaces/formal_wear/badge.png)](https://coveralls.io/r/wideopenspaces/formal_wear) [![Dependency Status](https://gemnasium.com/wideopenspaces/formal_wear.png)](https://gemnasium.com/wideopenspaces/formal_wear)
 
 "You're going to like the way you look. I guarantee it."
 
@@ -70,10 +70,10 @@ class TestFormalWear
 end
 ```
 
-Including FormalWear into your class adds a `required_attrs` and `required_attr` methods. 
-Specifying a required attr, like so: 
+Including FormalWear into your class adds a `required_attrs` and `required_attr` methods.
+Specifying a required attr, like so:
 
-```ruby 
+```ruby
   required_attr lambda_lambda_lambda: {
     name: 'Revenge Of The Nerds!',
     type: :text,
@@ -83,7 +83,7 @@ Specifying a required attr, like so:
 ```
 
 adds the attribute to the list of required_fields, and populates it from the source specified
-in its hash when your class is initialized. 
+in its hash when your class is initialized.
 
 ### Instantiating
 

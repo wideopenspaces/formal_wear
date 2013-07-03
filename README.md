@@ -1,5 +1,7 @@
 # FormalWear
 
+[![Build Status](https://travis-ci.org/wideopenspaces/formal_wear.png)](https://travis-ci.org/wideopenspaces/formal_wear.png)
+
 "You're going to like the way you look. I guarantee it."
 
 FormalWear helps you create Form Objects with required and optional attributes and gets all fancy widdit.

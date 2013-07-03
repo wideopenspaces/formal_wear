@@ -89,8 +89,7 @@ describe TestFormalWear do
     end
 
     context 'when supplied with alternate source objects' do
-      let(:config) { TestFormalWear.new(primary,
-        sources: {
+      let(:config) { TestFormalWear.new(sources: {
           object_two: ExternalObjectTwo.new("I am a secondary") } ) }
 
       it 'sets an instance variable called sources containing the sources' do

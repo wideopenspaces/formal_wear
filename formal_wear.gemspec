@@ -19,4 +19,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'hash_assertions', '~> 0.1.0'
   gem.add_development_dependency 'rspec'
   gem.add_development_dependency 'mocha', '~> 0.13.1'
+  gem.add_development_dependency 'coveralls'
 end

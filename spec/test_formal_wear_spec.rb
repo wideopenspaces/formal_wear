@@ -73,6 +73,20 @@ describe TestFormalWear do
         end
       end
     end
+
+    describe '.required_attr' do
+      context 'when given unallowed field options' do
+        it 'raises an ArgumentError' do
+          expect { require('forbidden_option_tester') }.to raise_error(ArgumentError, "Unknown key: extraneous")
+        end
+      end
+
+      context 'when missing required field options' do
+        it 'raises an ArgumentError' do
+          expect { require('missing_option_tester') }.to raise_error(ArgumentError, /Missing required key:/)
+        end
+      end
+    end
   end
 
   describe '#valid?' do

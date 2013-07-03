@@ -14,4 +14,8 @@ Gem::Specification.new do |gem|
   gem.name          = "formal_wear"
   gem.require_paths = ["lib"]
   gem.version       = FormalWear::VERSION
+
+  gem.add_dependency 'activesupport', '>= 3.0.20'
+  gem.add_dependency 'hash_assertions', '~> 0.1.0'
+  gem.add_development_dependency 'rspec'
 end

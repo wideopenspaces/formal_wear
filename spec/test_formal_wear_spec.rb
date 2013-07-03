@@ -87,6 +87,29 @@ describe TestFormalWear do
         end
       end
     end
+
+    context 'when supplied with alternate source objects' do
+      let(:config) { TestFormalWear.new(primary,
+        sources: {
+          object_two: ExternalObjectTwo.new("I am a secondary") } ) }
+
+      it 'sets an instance variable called sources containing the sources' do
+        config.instance_variable_defined?(:@sources).should be_true
+      end
+
+      it 'sets instance variables for each source object by name' do
+        config.instance_variable_defined?(:@object_two).should be_true
+      end
+
+      it 'sets a reader for each source object' do
+        config.respond_to?(:object_two).should be_true
+      end
+
+      it 'allows access to the source object correctly' do
+        config.object_two.another_thing_to_be_configured.should == "I am a secondary"
+      end
+    end
+
   end
 
   describe '#valid?' do

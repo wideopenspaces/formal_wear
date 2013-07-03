@@ -3,8 +3,9 @@ module FormalWear
     ### THE NITTY GRITTY STARTS HERE
 
     # Start the configuration process
-    def initialize(primary)
+    def initialize(primary, options = {})
       @primary = primary
+      set_sources(options[:sources]) if options[:sources].present?
       update_sources
     end
 
@@ -95,6 +96,14 @@ module FormalWear
 
     def lambda_store?(options)
       custom_store?(options) && options[:store].try(:lambda?)
+    end
+
+    def set_sources(sources)
+      @sources = sources
+      sources.each do |alt, obj|
+        class_eval { attr_reader alt }
+        instance_variable_set(:"@#{alt}", obj)
+      end
     end
 
     # When donning formal_wear, pre-populate from source if available

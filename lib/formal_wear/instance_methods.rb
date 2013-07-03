@@ -9,8 +9,9 @@ module FormalWear
     end
 
     def required_attributes
-      required_fields.dup.each do |field, options|
+      required_fields.deep_dup.each do |field, options|
         options.slice!(:name, :type)
+        options[:value] = self.send(field)
       end
     end
 

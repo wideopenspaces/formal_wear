@@ -108,7 +108,20 @@ describe TestFormalWear do
         config.object_two.another_thing_to_be_configured.should == "I am a secondary"
       end
     end
+  end
 
+  describe '#required_attributes' do
+    it 'removes all options except name, type and value' do
+      config.required_attributes.each do |r,o|
+        o.should_not include([:source, :store, :select_options])
+      end
+    end
+
+    it 'adds value to the options' do
+      config.required_attributes.each do |r,o|
+        o.should include(:value)
+      end
+    end
   end
 
   describe '#valid?' do

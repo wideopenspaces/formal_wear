@@ -107,7 +107,6 @@ under that tuxedo, though.
 * Add `optional_attr/optional_attrs` methods
 * (Maybe?) Add helper methods for providing data for working with forms
 * Add support for type: :select
-* Remove primary
 
 ## Contributing
 

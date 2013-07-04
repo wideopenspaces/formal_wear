@@ -152,6 +152,34 @@ describe 'a new FormalWear-ing object' do
     end
   end
 
+
+  describe '#update' do
+    context 'given anything other than a hash' do
+      subject { config.update("Bob") }
+
+      it 'raises an ArgumentError' do
+        expect { subject }.to raise_error(ArgumentError, "update requires a Hash")
+      end
+    end
+
+    context 'given a hash of params' do
+      subject { config.update(docs_id: 1, nonexistent_id: 4) }
+      it 'does not raise an error' do
+        expect { subject }.to_not raise_error(ArgumentError)
+      end
+
+      it 'updates local attributes based on input' do
+        subject
+        config.docs_id.should == 1
+      end
+
+      it 'should ignore attributes that do not exist' do
+        subject
+        config.try(:nonexistent_id).should be_nil
+      end
+    end
+  end
+
   describe '#save' do
     subject { config }
 

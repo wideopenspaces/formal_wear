@@ -42,9 +42,9 @@ module FormalWear
     end
 
     def update(attrs)
-      raise ArgumentError, "update requires a Hash"
+      raise ArgumentError, "update requires a Hash" unless attrs.is_a?(Hash)
       attrs.each do |field, value|
-        self.send(:"#{field}=", value) if instance_method_defined?(field)
+        send(:"#{field}=", value) if respond_to?(field)
       end
     end
 

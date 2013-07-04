@@ -9,15 +9,28 @@ module FormalWear
     end
 
     def required_attributes
-      required_fields.deep_dup.each do |field, options|
-        options.slice!(:name, :type)
-        options[:value] = self.send(field)
+      sanitize_and_fill_attributes(required_fields)
+    end
+
+    def optional_attributes
+      sanitize_and_fill_attributes(optional_fields)
+    end
+
+    def attributes
+      {}.tap do |h|
+        h.merge!(required_attributes: required_attributes) if required_attributes
+        h.merge!(optional_attributes: optional_attributes) if optional_attributes
       end
     end
+    alias_method :to_h, :attributes
 
     # Return the list of required fields for this configurator
     def required_fields
       @@required_fields
+    end
+
+    def optional_fields
+      @@optional_fields
     end
 
     def required_fields_without_custom_stores
@@ -26,12 +39,6 @@ module FormalWear
 
     def required_fields_with_custom_stores
       required_fields.select { |f,o| custom_store?(o) }
-    end
-
-    def to_h
-      {}.merge(required_attributes: required_attributes).tap do |h|
-        required_fields.keys.each { |k| h[k] = self.send(k) }
-      end
     end
 
     def update(attrs)
@@ -66,6 +73,13 @@ module FormalWear
       before_save
       yield if block_given?
       after_save
+    end
+
+    def sanitize_and_fill_attributes(fields)
+      fields.deep_dup.each do |field, options|
+        options.slice!(:name, :type)
+        options[:value] = self.send(field)
+      end
     end
 
     def set_field(field, options)

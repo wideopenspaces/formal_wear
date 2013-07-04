@@ -20,6 +20,15 @@ describe 'a new FormalWear-ing object' do
     end
   end
 
+  describe '#optional_fields' do
+    subject { config.optional_fields }
+    it { should be_a(Hash) }
+
+    it 'contains the appropriate optional fields' do
+      subject.keys.should =~ [:i_am_optional]
+    end
+  end
+
   it 'has a valid? method' do
     subject.should respond_to(:valid?)
   end
@@ -73,6 +82,14 @@ describe 'a new FormalWear-ing object' do
     end
   end
 
+  describe '#attributes' do
+    context 'given an object that contains required and optional attrs' do
+      it 'returns a hash containing appropriate keys' do
+        config.attributes.keys.should include(:required_attributes, :optional_attributes)
+      end
+    end
+  end
+
   describe '#required_attributes' do
     it 'removes all options except name, type and value' do
       config.required_attributes.each do |r,o|
@@ -82,6 +99,20 @@ describe 'a new FormalWear-ing object' do
 
     it 'adds value to the options' do
       config.required_attributes.each do |r,o|
+        o.should include(:value)
+      end
+    end
+  end
+
+  describe '#optional_attributes' do
+    it 'removes all options except name, type and value' do
+      config.optional_attributes.each do |r,o|
+        o.should_not include([:source, :store, :select_options])
+      end
+    end
+
+    it 'adds value to the options' do
+      config.optional_attributes.each do |r,o|
         o.should include(:value)
       end
     end

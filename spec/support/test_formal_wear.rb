@@ -23,6 +23,12 @@ class TestFormalWear
     store:  ->(s) { s.got_lambda? }
   }
 
+  optional_attr i_am_optional: {
+    name: 'Test optional',
+    type: 'text',
+    source: ->(s) { nil }
+  }
+
   protected
 
   def after_save

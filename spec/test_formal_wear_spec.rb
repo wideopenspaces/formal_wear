@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'test_formal_wear'
+require_relative './support/test_formal_wear'
 
 describe TestFormalWear do
   let(:primary) { ExternalObjectOne.new(nil, nil)}
@@ -77,13 +77,13 @@ describe TestFormalWear do
     describe '.required_attr' do
       context 'when given unallowed field options' do
         it 'raises an ArgumentError' do
-          expect { require('forbidden_option_tester') }.to raise_error(ArgumentError, "Unknown key: extraneous")
+          expect { require_relative('./support/forbidden_option_tester') }.to raise_error(ArgumentError, "Unknown key: extraneous")
         end
       end
 
       context 'when missing required field options' do
         it 'raises an ArgumentError' do
-          expect { require('missing_option_tester') }.to raise_error(ArgumentError, /Missing required key:/)
+          expect { require_relative('./support/missing_option_tester') }.to raise_error(ArgumentError, /Missing required key:/)
         end
       end
     end

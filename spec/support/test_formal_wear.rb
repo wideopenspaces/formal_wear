@@ -48,7 +48,7 @@ class TestFormalWear
   end
 
   def get_pledged
-    primary.dependent_object.another_thing_to_be_configured
+    primary.dependent_object.yet_another_thing_to_be_configured
   end
 end
 

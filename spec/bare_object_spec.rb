@@ -34,34 +34,33 @@ describe BareObject do
         obj.method_defined?(:dynamic_id=).should be_true
       end
     end
-  end
 
-  context 'when optional_attr is invoked' do
-    before do
-      obj.class_eval do
-        optional_attr optional_id: {
-          name: "Test",
-          type: :text,
-          source: ->(s) { nil },
-        }
+    context 'when optional_attr is invoked' do
+      before do
+        obj.class_eval do
+          optional_attr optional_id: {
+            name: "Test",
+            type: :text,
+            source: ->(s) { nil },
+          }
+        end
+      end
+
+      it 'sets a class variable called @@optional_attr' do
+        obj.class_variable_defined?(:@@optional_fields).should be_true
+      end
+
+      it 'adds the given field to @@optional_attr' do
+        obj.class_variable_get(:@@optional_fields).keys.should include(:optional_id)
+      end
+
+      it 'adds a reader for the field' do
+        obj.method_defined?(:optional_id).should be_true
+      end
+
+      it 'adds a writer for the field' do
+        obj.method_defined?(:optional_id=).should be_true
       end
     end
-
-    it 'sets a class variable called @@optional_attr' do
-      obj.class_variable_defined?(:@@optional_fields).should be_true
-    end
-
-    it 'adds the given field to @@optional_attr' do
-      obj.class_variable_get(:@@optional_fields).keys.should include(:optional_id)
-    end
-
-    it 'adds a reader for the field' do
-      obj.method_defined?(:optional_id).should be_true
-    end
-
-    it 'adds a writer for the field' do
-      obj.method_defined?(:optional_id=).should be_true
-    end
   end
-
 end

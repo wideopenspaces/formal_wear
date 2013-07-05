@@ -7,8 +7,12 @@ module FormalWear
     def validate_attrs!(attrs)
       attrs.each do |a, opts|
         opts.assert_valid_keys(*ALLOWED_KEYS)
-        opts.assert_required_keys(*REQUIRED_KEYS)
+        opts.assert_required_keys(*required_keys(opts))
       end
+    end
+
+    def required_keys(opts)
+      opts[:type] == :select ? REQUIRED_KEYS + [:select_options] : REQUIRED_KEYS
     end
   end
 end

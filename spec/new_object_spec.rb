@@ -122,6 +122,14 @@ describe 'a new FormalWear-ing object' do
         o.should include(:value)
       end
     end
+
+    context 'given type :text' do
+      it 'does not add values to the options' do
+        config.required_attributes.each do |r,o|
+          o.should_not include(:values)
+        end
+      end
+    end
   end
 
   describe '#optional_attributes' do

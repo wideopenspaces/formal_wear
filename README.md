@@ -106,7 +106,6 @@ under that tuxedo, though.
 
 * Update this readme
 * (Maybe?) Add helper methods for providing data for working with forms
-* Add support for type: :select
 
 ## Contributing
 

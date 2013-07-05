@@ -77,9 +77,22 @@ module FormalWear
 
     def sanitize_and_fill_attributes(fields)
       fields.deep_dup.each do |field, options|
-        options.slice!(:name, :type)
-        options[:value] = self.send(field)
+        fill_attributes!(field, options)
+        sanitize_attributes!(options)
       end
+    end
+
+    def sanitize_attributes!(options)
+      options.slice!(:name, :type, :value, :values)
+    end
+
+    def fill_attributes!(field, options)
+      options[:value]   = self.send(field)
+      populate_select_values(options) if options[:type] == :select
+    end
+
+    def populate_select_values(options)
+      options[:values]  = options[:select_options].call(self)
     end
 
     def set_field(field, options)

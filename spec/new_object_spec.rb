@@ -15,6 +15,10 @@ describe 'a new FormalWear-ing object' do
     subject { config.required_fields }
     it { should be_a(Hash) }
 
+    it "should mirror class's @@required_fields" do
+      subject.should == config.class.class_variable_get(:@@required_fields)
+    end
+
     it 'contains the appropriate required fields' do
       subject.keys.should =~ [:moms_id, :docs_id, :lambda_lambda_lambda]
     end
@@ -23,6 +27,10 @@ describe 'a new FormalWear-ing object' do
   describe '#optional_fields' do
     subject { config.optional_fields }
     it { should be_a(Hash) }
+
+    it "should mirror class's @@optional_fields" do
+      subject.should == config.class.class_variable_get(:@@optional_fields)
+    end
 
     it 'contains the appropriate optional fields' do
       subject.keys.should =~ [:i_am_optional]
@@ -152,13 +160,12 @@ describe 'a new FormalWear-ing object' do
     end
   end
 
-
   describe '#update' do
     context 'given anything other than a hash' do
       subject { config.update("Bob") }
 
       it 'raises an ArgumentError' do
-        expect { subject }.to raise_error(ArgumentError, "update requires a Hash")
+        expect { subject }.to raise_error(ArgumentError, 'update requires a Hash' )
       end
     end
 
@@ -218,5 +225,4 @@ describe 'a new FormalWear-ing object' do
       end
     end
   end
-
 end

@@ -70,14 +70,14 @@ describe 'a new FormalWear-ing object' do
   end
 
   context 'when supplied with only one source object' do
-    let(:config) { TestFormalWear.new(ExternalObjectTwo.new("I am a secondary")) }
+    let(:config) { TestFormalWear.new(ExternalObjectTwo.new(nil)) }
 
     it 'sets an instance variable called primary containing the source' do
       config.instance_variable_defined?(:@primary).should be_true
     end
 
     it 'allows access to the primary object correctly' do
-      config.primary.another_thing_to_be_configured.should == 'I am a secondary'
+      config.primary.yet_another_thing_to_be_configured.should == 'Stuff'
     end
   end
 

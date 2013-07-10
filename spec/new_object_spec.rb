@@ -202,7 +202,37 @@ describe 'a new FormalWear-ing object' do
 
       it 'should ignore attributes that do not exist' do
         subject
-        config.try(:nonexistent_id).should be_nil
+        config.respond_to?(:nonexistent_id).should be_false
+      end
+    end
+  end
+
+  describe '#update!' do
+    let!(:params) { { moms_id: 1, docs_id: 2, lambda_lambda_lambda: 3 } }
+
+    it 'should update docs_id' do
+      config.expects(:valid?).returns(false)
+      config.update!(params)
+      config.docs_id.should eq(2)
+    end
+
+    context 'if object is valid' do
+      before { config.expects(:save).returns(false) }
+
+      it 'should invoke #save' do
+        config.update!(params)
+      end
+    end
+
+    context 'if object is invalid' do
+      before { config.expects(:save).never }
+
+      it 'should not invoke #save' do
+        config.update!(params.except(:lambda_lambda_lambda))
+      end
+
+      it 'should return false' do
+        config.update!(params.except(:lambda_lambda_lambda)).should be_false
       end
     end
   end

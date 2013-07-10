@@ -48,6 +48,11 @@ module FormalWear
       end
     end
 
+    def update!(attrs)
+      update(attrs)
+      save if valid?
+    end
+
     def valid?
       required_fields.keys.all? { |k| self.send(k).present? }
     end

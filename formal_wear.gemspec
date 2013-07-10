@@ -16,7 +16,7 @@ Gem::Specification.new do |gem|
   gem.version       = FormalWear::VERSION
 
   gem.add_dependency 'activesupport', '>= 3.0.20'
-  gem.add_dependency 'hash_assertions', '~> 0.1.0'
+  gem.add_dependency 'i18n', '~> 0.5.0'
   gem.add_development_dependency 'rspec'
   gem.add_development_dependency 'mocha', '~> 0.13.1'
   gem.add_development_dependency 'coveralls'

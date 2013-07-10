@@ -1,10 +1,13 @@
+require 'active_support/core_ext'
+require 'active_support/concern'
+
+require 'core_extensions/hash/assert_required_keys'
+require 'core_extensions/hash/deep_dup'
+
 require 'formal_wear/version'
 require 'formal_wear/class_methods'
 require 'formal_wear/instance_methods'
 require 'formal_wear/suit'
-require 'hash_assertions'
-require 'active_support/core_ext'
-require 'active_support/concern'
 
 module FormalWear
   extend ActiveSupport::Concern

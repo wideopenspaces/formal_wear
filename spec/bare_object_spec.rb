@@ -1,7 +1,6 @@
 require 'spec_helper'
 require_relative './support/bare_object'
 require_relative './support/new_object'
-require 'pry'
 
 describe BareObject do
   let(:obj) { BareObject }

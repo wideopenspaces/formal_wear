@@ -1,0 +1,2 @@
+class NewObject
+end

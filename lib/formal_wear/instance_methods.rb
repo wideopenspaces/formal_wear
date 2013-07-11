@@ -6,6 +6,7 @@ module FormalWear
     def initialize(options = {})
       set_sources(options)
       update_sources
+      build_objects
     end
 
     def required_attributes
@@ -78,6 +79,10 @@ module FormalWear
       before_save
       yield if block_given?
       after_save
+    end
+
+    def build_objects
+      self.methods.select { |m| m.match(/build_/) }.each { |m| self.send(:"#{m.to_s.sub(/\Abuild_/, '')}=", self.send(m)) }
     end
 
     def sanitize_and_fill_attributes(fields)
@@ -155,7 +160,7 @@ module FormalWear
     def update_sources
       required_fields.each do |field, options|
         send(:"#{field}=", options[:source].call(self)) if options[:source] rescue nil
-      end
+      end if required_fields
     end
   end
 end

@@ -1,7 +1,16 @@
 module FormalWear
   module ClassMethods
+    def build(name, block)
+      create_accessors([name])
+      define_build_method(name, block)
+    end
+
     def create_accessors(keys)
       keys.each { |k| self.send(:attr_accessor, k) unless method_defined?(k) }
+    end
+
+    def define_build_method(name, block)
+      define_method(:"build_#{name}") { block.call }
     end
 
     def validate_attrs!(attrs)

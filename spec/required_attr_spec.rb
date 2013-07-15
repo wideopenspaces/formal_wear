@@ -9,7 +9,7 @@ describe 'Class#required_attr method' do
 
   context 'when missing required field options' do
     it 'raises an ArgumentError' do
-      expect { require_relative('./support/missing_option_tester') }.to raise_error(ArgumentError, /Missing required key(\(s\))*: type/)
+      expect { require_relative('./support/missing_option_tester') }.to raise_error(ArgumentError, /Missing required keys:/)
     end
   end
 end

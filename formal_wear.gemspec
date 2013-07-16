@@ -14,6 +14,7 @@ Gem::Specification.new do |gem|
   gem.name          = "formal_wear"
   gem.require_paths = ["lib"]
   gem.version       = FormalWear::VERSION
+  gem.license       = "MIT"
 
   gem.add_dependency 'activesupport', '>= 3.0.20'
   gem.add_dependency 'i18n', '~> 0.5.0'
